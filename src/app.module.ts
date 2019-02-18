@@ -5,11 +5,15 @@ import {AppRoutingModule} from './routes.module';
 
 import {AppComponent} from './app/components/app.component';
 
-import {AuthModule} from './app/modules/public/auth/auth.module';
+import {PublicModule} from './app/modules/public/public.module';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {NavigationStart, Router} from "@angular/router";
+import {ErrorsModule} from "./app/modules/error/error.module";
+import {ToastrModule} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -18,20 +22,33 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
-
+    // AnimationTransitionEvent,
+    ToastrModule.forRoot(), // ToastrModule added
     FormsModule,
     CommonModule,
-
-    AuthModule,
+    PublicModule,
+    ErrorsModule,
 
     AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule {
-  constructor() {
+  constructor(router: Router) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        console.log("ok?", event)
+      }
+      // NavigationEnd
+      // NavigationCancel
+      // NavigationError
+      // RoutesRecognized
+    })
   }
 
 }

@@ -1,0 +1,51 @@
+<div>
+  <form name="form" (ngSubmit)="signupForm.form.valid && onSubmit(signupForm)" #loginForm="ngForm" novalidate
+        class="text-center p-5">
+
+
+    <p class="h4 mb-4">Register</p>
+
+    <div class="p-3">
+      <button type="button" (click)="registerFacebook()" mdbWavesEffect
+              class="btn btn-rounded btn-primary ui-facebook p-3 btn-fb waves-light">
+        <mdb-icon fab icon="facebook"></mdb-icon>
+        <span class="p-3">Register through Facebook</span>
+      </button>
+    </div>
+
+    <div class="md-form">
+      <input mdbInput mdbValidate name="email" type="email" id="email" class="form-control" [(ngModel)]="user.email"
+             #email="ngModel" required pattern="[^ @]*@[^ @]*">
+      <label for="email">Email</label>
+      <mdb-error *ngIf="email.invalid && (email.dirty || email.touched)">Email must be a valid email address</mdb-error>
+    </div>
+
+    <div class="md-form">
+      <input mdbInput mdbValidate name="password" type="password" id="password" class="form-control"
+             [(ngModel)]="user.password" #password="ngModel" required>
+      <label for="password">Password</label>
+    </div>
+
+
+    <mdb-checkbox [default]="true" #toc="ngModel" name="toc" [(ngModel)]="user.toc" required>I agree to <a
+      class="text-primary" href="https://socialignite.media/terms-and-conditions/">Terms & Conditions</a></mdb-checkbox>
+    <!-- Default unchecked -->
+    <mdb-checkbox [checked]="true" class="md-c" [inline]="true" #mailing_list="ngModel" name="mailing_list"
+                  [(ngModel)]="user.mailing_list" required [default]="true">
+      Yes, I want social media tips straight to my mailbox.
+    </mdb-checkbox>
+
+
+    <!-- Sign in button -->
+    <div class="p-3">
+      <button mdbBtn color="primary" block="true" [disabled]="signingUp" class="my-12" type="submit">
+        <span *ngIf="signingUp">Signing up...</span>
+        <span *ngIf="!signingUp">Sign up</span>
+      </button>
+    </div>
+    <!-- Register -->
+    <p>already have an account?
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+    </p>
+  </form>
+</div>

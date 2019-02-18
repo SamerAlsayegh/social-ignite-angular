@@ -8,14 +8,36 @@ import {Request} from '../../models/Request';
 
 
 export class RequestService {
-  private errorCodes: any;
+  private errorCodes: any = {
+    FailedAPIConnection: {id: 1, details: 'Failed to connect to API'},
+    NotLoggedOn: {id: 14, detail: 'You are no-longer logged on.'},
+    RateLimitExceeded: {id: 30, detail: 'You have been rate-limited, please wait %s.'},
+  };
+
+  private platforms: any = {
+    0: {id: "facebook", detail: "Facebook"},
+    1: {id: "twitter", detail: "Twitter"},
+    4: {id: "instagram", detail: "Instagram"},
+    5: {id: "linkedin", detail: "LinkedIn"},
+    facebook: {id: 0, detail: "Facebook"},
+    instagram: {id: 4, detail: "Instagram"},
+    linkedin: {id: 5, detail: "LinkedIn"},
+    twitter: {id: 1, detail: "Twitter"},
+  };
+
+  private platformErrors: any = {};
+
 
   constructor(private http: HttpClient) {
-    this.errorCodes = {
-      FailedAPIConnection: {id: 1, details: 'Failed to connect to API'},
-      NotLoggedOn: {id: 14, detail: 'You are no-longer logged on.'},
-      RateLimitExceeded: {id: 30, detail: 'You have been rate-limited, please wait %s.'},
-    };
+    let self = this;
+    this.get('metadata').then(function (data) {
+      self.platformErrors = data.body.data.platformErrors;
+      self.platforms = data.body.data.platforms;
+      self.errorCodes = data.body.data.errorCodes;
+    }).catch(function (err) {
+
+    })
+
   }
 
 
@@ -33,7 +55,7 @@ export class RequestService {
         return {data: message.data, body: message};
       } else {
         throw {status, message: message.message, body: message};
-           }
+      }
     }).catch((err) => {
       console.log(err);
       const status = err.status;
@@ -46,17 +68,17 @@ export class RequestService {
             // $state.go('public.login', {});
             throw {
               status,
-              message: this.errorCodes.NotLoggedOn.detail,
-              body: this.errorCodes.NotLoggedOn.id
+              message: this.errorCodes.getErrorCodes().NotLoggedOn.detail,
+              body: this.errorCodes.getErrorCodes().NotLoggedOn.id
             };
           // cbFail(status, $rootScope.errorCodes.NotLoggedOn.detail, $rootScope.errorCodes.NotLoggedOn.id);
           // break;
           case 429:
             throw {
               status,
-               message: this.errorCodes.RateLimitExceeded.detail
-                 .replace('%s', ((err.headers('x-ratelimit-pathreset') - new Date().getTime()) / 1000).toFixed(0) + ' seconds'),
-              body: this.errorCodes.RateLimitExceeded.id
+              message: this.errorCodes.getErrorCodes().RateLimitExceeded.detail
+                .replace('%s', ((err.headers('x-ratelimit-pathreset') - new Date().getTime()) / 1000).toFixed(0) + ' seconds'),
+              body: this.errorCodes.getErrorCodes().RateLimitExceeded.id
             };
           default:
             const message = err.data.message;
@@ -67,7 +89,7 @@ export class RequestService {
             };
         }
       } else {
-        throw {status, message: this.errorCodes.FailedAPIConnection.details};
+        throw {status, message: this.errorCodes.getErrorCodes().FailedAPIConnection.details};
       }
     });
   }
@@ -97,17 +119,17 @@ export class RequestService {
             // $state.go('public.login', {});
             throw {
               status,
-              message: this.errorCodes.NotLoggedOn.detail,
-              body: this.errorCodes.NotLoggedOn.id
+              message: this.errorCodes.getErrorCodes().NotLoggedOn.detail,
+              body: this.errorCodes.getErrorCodes().NotLoggedOn.id
             };
           // cbFail(status, $rootScope.errorCodes.NotLoggedOn.detail, $rootScope.errorCodes.NotLoggedOn.id);
           // break;
           case 429:
             throw {
               status,
-              message: this.errorCodes.RateLimitExceeded.detail
+              message: this.errorCodes.getErrorCodes().RateLimitExceeded.detail
                 .replace('%s', ((err.headers('x-ratelimit-pathreset') - new Date().getTime()) / 1000).toFixed(0) + ' seconds'),
-              body: this.errorCodes.RateLimitExceeded.id
+              body: this.errorCodes.getErrorCodes().RateLimitExceeded.id
             };
           // cbFail(status, $rootScope.errorCodes.RateLimitExceeded.detail.replace("%s", ((data.headers('x-ratelimit-pathreset') - new Date().getTime()) / 1000).toFixed(0) + ' seconds'), $rootScope.errorCodes.RateLimitExceeded.id);
           // break;
@@ -121,7 +143,7 @@ export class RequestService {
             };
         }
       } else {
-        throw {status, message: this.errorCodes.FailedAPIConnection.details};
+        throw {status, message: this.errorCodes.getErrorCodes().FailedAPIConnection.details};
       }
     });
   }

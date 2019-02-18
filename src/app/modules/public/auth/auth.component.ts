@@ -7,9 +7,8 @@ import {environment} from '../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'socialignite-auth-component',
     template: require('./auth.component.html'),
-    // styleUrls: ['./home.component.css']
+    styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
     private env: any;
@@ -19,7 +18,7 @@ export class AuthComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('configured routes: ', this.router.config);
+
     }
 
 }

@@ -1,0 +1,8 @@
+.background {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#40a8f4+0,34a1ef+50,40a8f4+100 */
+  background: #40a8f4; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #40a8f4 0%, #34a1ef 50%, #40a8f4 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, #40a8f4 0%,#34a1ef 50%,#40a8f4 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, #40a8f4 0%,#34a1ef 50%,#40a8f4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40a8f4', endColorstr='#40a8f4',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}

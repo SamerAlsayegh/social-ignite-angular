@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AuthComponent} from './auth.component';
-import {LoginComponent} from './login/login.component';
+import {PageNotFoundComponent} from "./errors/not_found/not_found.component";
 
 const routes: Routes = [
-    { path: 'auth', component: AuthComponent},
-    { path: 'auth/login', component: LoginComponent}
+    { path: '**', component: PageNotFoundComponent},
 ];
 
 @NgModule({
@@ -16,4 +14,4 @@ const routes: Routes = [
         RouterModule
     ]
 })
-export class AuthRoutesModule {}
+export class ErrorRoutesModule {}
