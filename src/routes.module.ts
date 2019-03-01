@@ -1,18 +1,41 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {AuthRoutes} from './app/modules/public/public.routes.module';
-import {AuthComponent} from "./app/modules/public/auth/auth.component";
+import {PublicRoutes} from './app/modules/public/public.routes.module';
+import {PublicComponent} from "./app/modules/public/components/public.component";
+import {AuthGuardPublicService} from "./app/services/AuthGuard/public.authguard.service";
+import {PortalComponent} from "./app/modules/portal/components/portal.component";
+import {PortalRoutes} from "./app/modules/portal/portal.routes.module";
+import {AuthGuardPortalService} from "./app/services/AuthGuard/portal.authguard.service";
+import {AdminComponent} from "./app/modules/admin/components/admin.component";
+import {AuthGuardAdminService} from "./app/services/AuthGuard/admin.authguard.service";
+import {AdminRoutes} from "./app/modules/admin/admin.routes.module";
 
 
 const routes: Routes = [
   {
     path: '',
-    // outlet: 'app',
-    // redirectTo: '/auth/login',
-    // pathMatch: 'full',
-    component: AuthComponent,
-    children: AuthRoutes,
+    canActivate: [
+      AuthGuardPublicService
+    ],
+    component: PublicComponent,
+    children: PublicRoutes,
+  },
+  {
+    path: '',
+    canActivate: [
+      AuthGuardPortalService
+    ],
+    component: PortalComponent,
+    children: PortalRoutes,
+  },
+  {
+    path: 'admin',
+    canActivate: [
+      AuthGuardAdminService
+    ],
+    component: AdminComponent,
+    children: AdminRoutes,
   },
 ];
 

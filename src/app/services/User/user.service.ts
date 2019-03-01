@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
 import {RequestService} from '../Request/request.service';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
-import {Observable} from "rxjs/Observable";
+import {Router} from "@angular/router";
 
 
 @Injectable()
 
 
-export class UserService implements CanActivate {
+export class UserService {
   private user: any;
   private loggedIn: boolean;
 
@@ -105,16 +104,15 @@ export class UserService implements CanActivate {
     // Get from api, or use loaded variable? Allow person to force refresh details
   }
 
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.getUser(true).then(loggedInUser=>{
-      if (!loggedInUser) {
-        this.router.navigate(['login']);
-        return false;
-      }
-      return true;
-    }).catch(err => {
-      return false;
-    })
-  }
+  // canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  //   return this.getUser(true).then(loggedInUser=>{
+  //     if (!loggedInUser) {
+  //       this.router.navigate(['login']);
+  //       return false;
+  //     }
+  //     return true;
+  //   }).catch(err => {
+  //     return false;
+  //   })
+  // }
 }

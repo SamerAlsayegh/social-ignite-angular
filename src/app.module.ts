@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './routes.module';
 
 
-import {AppComponent} from './app/components/app.component';
+import {AppComponent} from './app/app.component';
 
 import {PublicModule} from './app/modules/public/public.module';
 import {HttpClientModule} from '@angular/common/http';
@@ -14,26 +14,48 @@ import {NavigationStart, Router} from "@angular/router";
 import {ErrorsModule} from "./app/modules/error/error.module";
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {RequestService} from "./app/services/Request/request.service";
+import {UserService} from "./app/services/User/user.service";
+import {AlertService} from "./app/services/Alert/alert.service";
+import {PortalModule} from "./app/modules/portal/portal.module";
+import {AuthGuardPublicService} from "./app/services/AuthGuard/public.authguard.service";
+import {AuthGuardPortalService} from "./app/services/AuthGuard/portal.authguard.service";
+import {
+  IgxButtonModule,
+  IgxIconModule,
+  IgxLayoutModule,
+  IgxNavigationDrawerModule,
+  IgxRadioModule, IgxRippleModule, IgxSwitchModule, IgxToggleModule
+} from "igniteui-angular";
+import {AuthGuardAdminService} from "./app/services/AuthGuard/admin.authguard.service";
+import {AdminModule} from "./app/modules/admin/admin.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
-    // AnimationTransitionEvent,
     ToastrModule.forRoot(), // ToastrModule added
     FormsModule,
     CommonModule,
     PublicModule,
+    PortalModule,
     ErrorsModule,
-
+    AdminModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuardPublicService,
+    AuthGuardPortalService,
+    AuthGuardAdminService,
+    UserService,
+    RequestService,
+    AlertService
+  ],
   bootstrap: [AppComponent]
 })
 

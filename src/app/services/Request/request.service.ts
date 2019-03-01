@@ -30,6 +30,7 @@ export class RequestService {
 
   constructor(private http: HttpClient) {
     let self = this;
+    console.log("ok")
     this.get('metadata').then(function (data) {
       self.platformErrors = data.body.data.platformErrors;
       self.platforms = data.body.data.platforms;
@@ -68,17 +69,17 @@ export class RequestService {
             // $state.go('public.login', {});
             throw {
               status,
-              message: this.errorCodes.getErrorCodes().NotLoggedOn.detail,
-              body: this.errorCodes.getErrorCodes().NotLoggedOn.id
+              message: this.errorCodes.NotLoggedOn.detail,
+              body: this.errorCodes.NotLoggedOn.id
             };
           // cbFail(status, $rootScope.errorCodes.NotLoggedOn.detail, $rootScope.errorCodes.NotLoggedOn.id);
           // break;
           case 429:
             throw {
               status,
-              message: this.errorCodes.getErrorCodes().RateLimitExceeded.detail
+              message: this.errorCodes.RateLimitExceeded.detail
                 .replace('%s', ((err.headers('x-ratelimit-pathreset') - new Date().getTime()) / 1000).toFixed(0) + ' seconds'),
-              body: this.errorCodes.getErrorCodes().RateLimitExceeded.id
+              body: this.errorCodes.RateLimitExceeded.id
             };
           default:
             const message = err.data.message;
@@ -89,7 +90,7 @@ export class RequestService {
             };
         }
       } else {
-        throw {status, message: this.errorCodes.getErrorCodes().FailedAPIConnection.details};
+        throw {status, message: this.errorCodes.FailedAPIConnection.details};
       }
     });
   }
@@ -108,7 +109,6 @@ export class RequestService {
         throw {status, message: message, body: message};
       }
     }).catch((err) => {
-      console.log(err);
       const status = err.status;
       if (status != -1) {
         switch (status) {
@@ -119,22 +119,21 @@ export class RequestService {
             // $state.go('public.login', {});
             throw {
               status,
-              message: this.errorCodes.getErrorCodes().NotLoggedOn.detail,
-              body: this.errorCodes.getErrorCodes().NotLoggedOn.id
+              message: this.errorCodes.NotLoggedOn.detail,
+              body: this.errorCodes.NotLoggedOn.id
             };
           // cbFail(status, $rootScope.errorCodes.NotLoggedOn.detail, $rootScope.errorCodes.NotLoggedOn.id);
           // break;
           case 429:
             throw {
               status,
-              message: this.errorCodes.getErrorCodes().RateLimitExceeded.detail
+              message: this.errorCodes.RateLimitExceeded.detail
                 .replace('%s', ((err.headers('x-ratelimit-pathreset') - new Date().getTime()) / 1000).toFixed(0) + ' seconds'),
-              body: this.errorCodes.getErrorCodes().RateLimitExceeded.id
+              body: this.errorCodes.RateLimitExceeded.id
             };
           // cbFail(status, $rootScope.errorCodes.RateLimitExceeded.detail.replace("%s", ((data.headers('x-ratelimit-pathreset') - new Date().getTime()) / 1000).toFixed(0) + ' seconds'), $rootScope.errorCodes.RateLimitExceeded.id);
           // break;
           default:
-            console.log(err);
             // let message = err.data.message;
             throw {
               status,
@@ -143,7 +142,7 @@ export class RequestService {
             };
         }
       } else {
-        throw {status, message: this.errorCodes.getErrorCodes().FailedAPIConnection.details};
+        throw {status, message: this.errorCodes.FailedAPIConnection.details};
       }
     });
   }

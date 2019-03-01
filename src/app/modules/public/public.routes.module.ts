@@ -1,10 +1,11 @@
-import {LoginComponent} from './auth/login/login.component';
-import {RegisterComponent} from "./auth/register/register.component";
-import {UserService} from "../../services/User/user.service";
+import {LoginComponent} from './components/login/login.component';
+import {RegisterComponent} from "./components/register/register.component";
 
-export const AuthRoutes = [
+
+export const PublicRoutes = [
   // {path: '', component: AuthComponent, outlet: 'auth'},
-  {path: 'login', component: LoginComponent, canActivate: [UserService]},
-  {path: 'register', component: RegisterComponent, canActivate: [UserService]}
+  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent}
 ];
 

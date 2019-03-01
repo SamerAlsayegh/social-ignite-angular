@@ -1,0 +1,40 @@
+<igx-nav-drawer id="navigation" [pin]="true" [width]="'180px'">
+  <ng-template igxDrawer>
+    <nav>
+      <span igxDrawerItem [isHeader]="true">
+        <img mdbWavesEffect [src]="'/assets/img/boxed/144/dark_logo_simple_cubed.png'" class="img-fluid view-overlay mx-auto d-block"
+             alt="placeholder">
+      </span>
+
+      <span *ngFor="let item of navItems" igxDrawerItem [active]="item.text === selected" igxRipple
+            (click)="navigate(item)">
+        <igx-icon fontSet="material">{{ item.name }}</igx-icon>
+        <span>{{ item.text }}</span>
+      </span>
+    </nav>
+  </ng-template>
+
+  <ng-template igxDrawerMini>
+    <nav>
+      <span igxDrawerItem igxRipple igxToggleAction="navigation" [closeOnOutsideClick]="false">
+        <igx-icon fontSet="material">menu</igx-icon>
+      </span>
+      <span *ngFor="let item of navItems" igxDrawerItem [active]="item.text === selected" igxRipple
+            (click)="navigate(item)">
+        <igx-icon fontSet="material">{{ item.name }}</igx-icon>
+      </span>
+    </nav>
+  </ng-template>
+</igx-nav-drawer>
+
+<!--<igx-navbar igxFlex actionButtonIcon="menu" [isActionButtonVisible]="true">-->
+
+<!--<igx-action-icon>-->
+<!--<span igxButton="icon" igxToggleAction="navigation" [closeOnOutsideClick]="false">-->
+<!--<igx-icon fontSet="material">menu</igx-icon>-->
+<!--</span>-->
+<!--</igx-action-icon>-->
+<!--</igx-navbar>-->
+
+
+
