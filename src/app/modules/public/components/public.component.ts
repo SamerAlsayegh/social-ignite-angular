@@ -7,7 +7,7 @@ import {environment} from '../../../environments/environment';
 
 
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../../services/User/user.service";
+import {UserService} from "../../../services/shared/User/user.service";
 import {from} from "rxjs/internal/observable/from";
 
 @Component({

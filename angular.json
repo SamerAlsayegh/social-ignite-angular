@@ -35,12 +35,12 @@
               "node_modules/angular-bootstrap-md/scss/mdb-free.scss",
               "node_modules/ngx-toastr/toastr.css",
               "src/scss/base.scss",
-              "node_modules/igniteui-angular/styles/igniteui-angular.css"
+              "node_modules/igniteui-angular/styles/igniteui-angular.css",
+              "node_modules/angular-calendar/css/angular-calendar.css"
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.js",
-              "node_modules/hammerjs/hammer.min.js",
-              "./node_modules/hammerjs/hammer.min.js"
+              "node_modules/hammerjs/hammer.min.js"
             ]
           },
           "configurations": {

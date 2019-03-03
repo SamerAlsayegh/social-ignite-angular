@@ -26,8 +26,8 @@ export class UserService {
     }
   }
 
-  async logout(parameters) {
-    return this.Request.post('auth/logout', parameters).then((data) => {
+  async logout() {
+    return this.Request.post('auth/logout').then((data) => {
       this.user = null;
       this.loggedIn = false;
     });

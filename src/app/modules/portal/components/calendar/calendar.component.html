@@ -1,0 +1,8 @@
+<mwl-calendar-week-view
+  [viewDate]="viewDate"
+  [events]="events"
+  [refresh]="refresh"
+  (dayClicked)="dayClicked($event.day)"
+  (eventClicked)="handleEvent('Clicked', $event.event)"
+  (eventTimesChanged)="eventTimesChanged($event)">
+</mwl-calendar-week-view>

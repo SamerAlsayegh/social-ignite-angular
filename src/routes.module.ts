@@ -3,12 +3,12 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {PublicRoutes} from './app/modules/public/public.routes.module';
 import {PublicComponent} from "./app/modules/public/components/public.component";
-import {AuthGuardPublicService} from "./app/services/AuthGuard/public.authguard.service";
+import {AuthGuardPublicService} from "./app/services/shared/AuthGuard/public.authguard.service";
 import {PortalComponent} from "./app/modules/portal/components/portal.component";
 import {PortalRoutes} from "./app/modules/portal/portal.routes.module";
-import {AuthGuardPortalService} from "./app/services/AuthGuard/portal.authguard.service";
+import {AuthGuardPortalService} from "./app/services/shared/AuthGuard/portal.authguard.service";
 import {AdminComponent} from "./app/modules/admin/components/admin.component";
-import {AuthGuardAdminService} from "./app/services/AuthGuard/admin.authguard.service";
+import {AuthGuardAdminService} from "./app/services/shared/AuthGuard/admin.authguard.service";
 import {AdminRoutes} from "./app/modules/admin/admin.routes.module";
 
 

@@ -23,6 +23,8 @@ import {
 } from "igniteui-angular";
 import {StatsCardComponent} from "./components/dashboard/common/stats-card/stats-card.component";
 import {PostComponent} from "./components/post/post.component";
+import {CalendarModule, DateAdapter} from "angular-calendar";
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   imports: [
@@ -41,6 +43,10 @@ import {PostComponent} from "./components/post/post.component";
     IgxLayoutModule,
     IgxRippleModule,
     IgxToggleModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
   ],
   declarations: [
     PortalComponent,

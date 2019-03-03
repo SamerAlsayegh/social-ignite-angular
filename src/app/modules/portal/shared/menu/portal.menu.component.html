@@ -1,10 +1,11 @@
 <igx-nav-drawer id="navigation" [pin]="true" [width]="'180px'">
   <ng-template igxDrawer>
     <nav>
-      <span igxDrawerItem [isHeader]="true">
-        <img mdbWavesEffect [src]="'/assets/img/boxed/144/dark_logo_simple_cubed.png'" class="img-fluid view-overlay mx-auto d-block"
-             alt="placeholder">
+      <span igxDrawerItem  igxToggleAction="navigation" [closeOnOutsideClick]="true" igxRipple>
+        <igx-icon fontSet="material">menu</igx-icon>
+        <span></span>
       </span>
+
 
       <span *ngFor="let item of navItems" igxDrawerItem [active]="item.text === selected" igxRipple
             (click)="navigate(item)">
@@ -16,7 +17,7 @@
 
   <ng-template igxDrawerMini>
     <nav>
-      <span igxDrawerItem igxRipple igxToggleAction="navigation" [closeOnOutsideClick]="false">
+      <span igxDrawerItem igxRipple igxToggleAction="navigation" [closeOnOutsideClick]="true">
         <igx-icon fontSet="material">menu</igx-icon>
       </span>
       <span *ngFor="let item of navItems" igxDrawerItem [active]="item.text === selected" igxRipple

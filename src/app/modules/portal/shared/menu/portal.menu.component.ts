@@ -1,8 +1,11 @@
+import {UserService} from "../../../../services/shared/User/user.service";
+
 declare var require: any;
 
 import { Component, ViewChild, ViewEncapsulation } from "@angular/core";
 import { IgxNavigationDrawerComponent } from "igniteui-angular";
 import {Router} from "@angular/router";
+import {AlertService} from "../../../../services/shared/Alert/alert.service";
 
 
 
@@ -25,6 +28,8 @@ export class PortalMenuComponent {
     { name: "fingerprint", text: "Admin", link: "admin"},
     { name: "shopping_cart", text: "Billing", link: "billing"},
     { name: "group", text: "Team", link: "team"},
+    { name: "verified_user", text: "Profile", link: "profile"},
+    { name: "vpn_key", text: "Logout", link: "logout"},
 
   ];
   public selected = "Dashboard";
@@ -33,15 +38,27 @@ export class PortalMenuComponent {
   @ViewChild(IgxNavigationDrawerComponent)
   public drawer: IgxNavigationDrawerComponent;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private User: UserService, private Alert: AlertService) {
 
   }
 
 
   /** Select item and close drawer if not pinned */
   public navigate(item) {
-    this.selected = item.text;
-    this.router.navigate(['/' + item.link]);
+    let self = this;
+
+    if (item.link == "logout"){
+      // Logout...
+      this.User.logout().then(function(){
+        self.router.navigate(['/login']);
+      }).catch(function (err) {
+        self.Alert.error("Failed to logout.")
+      });
+
+    } else {
+      this.selected = item.text;
+      this.router.navigate(['/' + item.link]);
+    }
     this.drawer.close();
   }
 
