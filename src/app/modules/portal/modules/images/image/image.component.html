@@ -1,0 +1,18 @@
+<div class="view rgba-white-slight waves-light p-3" mdbWavesEffect>
+  <!-- Card img -->
+  <mdb-card-img [src]="image.url" alt="Card image cap"></mdb-card-img>
+  <a>
+    <div class="mask"></div>
+  </a>
+  <div class="btn-group d-flex"  role="group" aria-label="Basic example">
+    <button mdbBtn type="button" (click)="deleteImage(image)" color="primary" class="waves-light" mdbWavesEffect>
+      <mdb-icon fas icon="trash"></mdb-icon>
+    </button>
+    <button mdbBtn type="button" disabled color="primary" class="waves-light w-100" mdbWavesEffect>
+
+    </button>
+    <button mdbBtn type="button" (click)="editImage(image)" color="primary" class="waves-light" mdbWavesEffect>
+      <mdb-icon fas icon="pen"></mdb-icon>
+    </button>
+  </div>
+</div>

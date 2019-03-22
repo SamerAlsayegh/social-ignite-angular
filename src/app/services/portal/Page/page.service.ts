@@ -7,29 +7,25 @@ import {Router} from "@angular/router";
 
 
 export class PageService {
-  private user: any;
-  private loggedIn: boolean;
 
-  constructor(private Request: RequestService, private router: Router) {
+  constructor(private Request: RequestService) {
 
   }
 
-  async login(parameters) {
+  async getPages(parameters) {
     try {
-      const data = await this.Request.post('auth/login', parameters);
-      // this.user = data.body;
-      this.loggedIn = true;
-      return true;
+      return (await this.Request.get('portal/social_pages', parameters)).data;
     } catch (e) {
       // Log Error?
-      return false;
+      return null;
     }
   }
-
-  async logout(parameters) {
-    return this.Request.post('auth/logout', parameters).then((data) => {
-      this.user = null;
-      this.loggedIn = false;
-    });
+  async getPage(pageId) {
+    try {
+      return (await this.Request.get('portal/social_pages/'+pageId)).data;
+    } catch (e) {
+      // Log Error?
+      return null;
+    }
   }
 }

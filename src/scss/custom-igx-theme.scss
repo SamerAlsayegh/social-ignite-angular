@@ -1,0 +1,23 @@
+// Import the IgniteUI themes library first
+@import "~igniteui-angular/lib/core/styles/themes/index";
+
+
+$light-theme-palette: igx-palette($primary: #03A9F4, $secondary: #282828);
+$dark-theme-palette: igx-palette($primary: #282828, $secondary: #03A9F4);
+
+
+
+// Define dark theme for the input-group
+$title-theme: igx-navbar-theme(
+  $palette: $light-theme-palette,
+  $text-color:  #fff,
+  $background: igx-color($light-theme-palette, "primary", 500)
+);
+
+$unnecessary: (igx-navbar);
+
+@include igx-navbar($title-theme);
+// IMPORTANT: Make sure you always include igx-core first!
+@include igx-core();
+// Pass the color palette we generated to the igx-theme mixin
+@include igx-theme($light-theme-palette, $exclude: $unnecessary);

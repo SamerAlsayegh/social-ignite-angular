@@ -1,15 +1,12 @@
 <div>
-  <form name="form" (ngSubmit)="loginForm.form.valid && onSubmit(loginForm)" #loginForm="ngForm" novalidate
-        class="text-center p-5">
+  <form name="form" (ngSubmit)="loginForm.form.valid && onSubmit(loginForm)" #loginForm="ngForm" novalidate>
 
-
-    <p class="h4 mb-4">Sign in</p>
+    <p class="h4 mb-4 text-center">Let's Get Igniting</p>
 
     <div class="p-3">
-      <button type="button" (click)="loginFacebook()" mdbWavesEffect
-              class="btn btn-rounded btn-primary ui-facebook p-3 btn-fb waves-light">
+      <button type="button" (click)="loginFacebook()" mdbBtn block="true" mdbWavesEffect class="btn-rounded btn-primary ui-facebook p-3 btn-fb waves-light">
         <mdb-icon fab icon="facebook"></mdb-icon>
-        <span class="p-3">Login through Facebook</span>
+        <span class="p-3">Sign In through Facebook</span>
       </button>
     </div>
 
@@ -44,27 +41,18 @@
     <!--</div>-->
     <!--</div>-->
     <!-- Password -->
-    <div class="d-flex justify-content-around">
-      <div>
-        <!-- Remember me -->
-        <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
-      </div>
-      <div>
-        <!-- Forgot password -->
-        <a href="">Forgot password?</a>
-      </div>
+    <div class="d-flex justify-content-around p-3">
+      <a href="/forgot_password">Forgot Password?</a>
     </div>
 
     <!-- Sign in button -->
 
-    <button mdbBtn color="primary" block="true"  [disabled]="loggingIn" class="my-12" type="submit">
-      <span *ngIf="loggingIn">Signing in...</span>
-      <span *ngIf="!loggingIn">Sign in</span>
-    </button>
-
-    <!-- Register -->
-    <p>Not a member?
-      <a routerLink="/register" routerLinkActive="active">Register</a>
-    </p>
+    <div class="btn-group btn-group-sm d-flex" role="group" aria-label="Login options">
+      <button mdbBtn color="primary" block="true" [disabled]="loggingIn" class="flex-fill" type="submit">
+        <span *ngIf="loggingIn">Signing in...</span>
+        <span *ngIf="!loggingIn">Sign in</span>
+      </button>
+      <button routerLink="/register" routerLinkActive="active" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>Register</button>
+    </div>
   </form>
 </div>

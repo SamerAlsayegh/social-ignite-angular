@@ -1,17 +1,18 @@
 <div style="width: 100%;height: 100%; overflow-y:auto;" class="container-fluid background">
   <div class="row" style="width: 100%; height: 100%;">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 align-self-center">
+    <div class="offset-lg-4 col-lg-4 offset-md-3 col-md-6 align-self-center">
       <mdb-card class="align-middle align-self-center">
-        <div class="text-center">
-          <img mdbWavesEffect [src]="'/assets/img/boxed/144/dark_logo_simple_cubed.png'" class="img-fluid view-overlay"
-               alt="placeholder">
+        <div class="p-5">
+          <div class="text-center p-2">
+            <img mdbWavesEffect [src]="'/assets/img/boxed/144/dark_logo_simple_cubed.png'"
+                 class="img-fluid view-overlay"
+                 alt="placeholder">
+          </div>
+          <section>
+            <router-outlet></router-outlet>
+          </section>
         </div>
-        <section>
-          <router-outlet></router-outlet>
-        </section>
       </mdb-card>
     </div>
-    <div class="col-md-4"></div>
   </div>
 </div>

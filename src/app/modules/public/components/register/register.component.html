@@ -1,17 +1,17 @@
 <div>
-  <form name="form" (ngSubmit)="signupForm.form.valid && onSubmit(signupForm)" #loginForm="ngForm" novalidate
-        class="text-center p-5">
+  <form name="form" (ngSubmit)="signupForm.form.valid && onSubmit(signupForm)" #loginForm="ngForm" novalidate>
 
 
-    <p class="h4 mb-4">Register</p>
+    <p class="h4 mb-4 text-center">Ignite Your Social Media</p>
 
     <div class="p-3">
-      <button type="button" (click)="registerFacebook()" mdbWavesEffect
-              class="btn btn-rounded btn-primary ui-facebook p-3 btn-fb waves-light">
+      <button type="button" (click)="registerFacebook()" mdbBtn block="true" mdbWavesEffect class="btn-rounded btn-primary ui-facebook p-3 btn-fb waves-light">
         <mdb-icon fab icon="facebook"></mdb-icon>
         <span class="p-3">Register through Facebook</span>
       </button>
     </div>
+
+
 
     <div class="md-form">
       <input mdbInput mdbValidate name="email" type="email" id="email" class="form-control" [(ngModel)]="user.email"
@@ -27,25 +27,25 @@
     </div>
 
 
-    <mdb-checkbox [default]="true" #toc="ngModel" name="toc" [(ngModel)]="user.toc" required>I agree to <a
-      class="text-primary" href="https://socialignite.media/terms-and-conditions/">Terms & Conditions</a></mdb-checkbox>
-    <!-- Default unchecked -->
-    <mdb-checkbox [checked]="true" class="md-c" [inline]="true" #mailing_list="ngModel" name="mailing_list"
-                  [(ngModel)]="user.mailing_list" required [default]="true">
-      Yes, I want social media tips straight to my mailbox.
-    </mdb-checkbox>
-
-
-    <!-- Sign in button -->
     <div class="p-3">
-      <button mdbBtn color="primary" block="true" [disabled]="signingUp" class="my-12" type="submit">
+      <mdb-checkbox [default]="true" #toc="ngModel" name="toc" [(ngModel)]="user.toc" required>I agree to <a
+        class="text-primary" href="https://socialignite.media/terms-and-conditions/">Terms & Conditions</a></mdb-checkbox>
+      <!-- Default unchecked -->
+      <mdb-checkbox [checked]="true" class="md-c" [inline]="true" #mailing_list="ngModel" name="mailing_list"
+                    [(ngModel)]="user.mailing_list" required [default]="true">
+        Yes, I want social media tips straight to my mailbox.
+      </mdb-checkbox>
+    </div>
+
+
+    <div class="btn-group btn-group-sm d-flex" role="group" aria-label="Login options">
+      <button mdbBtn color="primary" block="true" [disabled]="signingUp" class="flex-fill" type="submit">
         <span *ngIf="signingUp">Signing up...</span>
         <span *ngIf="!signingUp">Sign up</span>
       </button>
+      <button routerLink="/login" routerLinkActive="active" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>Login</button>
     </div>
-    <!-- Register -->
-    <p>already have an account?
-      <a routerLink="/login" routerLinkActive="active">Login</a>
-    </p>
+
+
   </form>
 </div>

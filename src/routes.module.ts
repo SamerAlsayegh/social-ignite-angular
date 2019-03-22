@@ -1,15 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-
-import {PublicRoutes} from './app/modules/public/public.routes.module';
 import {PublicComponent} from "./app/modules/public/components/public.component";
 import {AuthGuardPublicService} from "./app/services/shared/AuthGuard/public.authguard.service";
 import {PortalComponent} from "./app/modules/portal/components/portal.component";
-import {PortalRoutes} from "./app/modules/portal/portal.routes.module";
 import {AuthGuardPortalService} from "./app/services/shared/AuthGuard/portal.authguard.service";
 import {AdminComponent} from "./app/modules/admin/components/admin.component";
 import {AuthGuardAdminService} from "./app/services/shared/AuthGuard/admin.authguard.service";
-import {AdminRoutes} from "./app/modules/admin/admin.routes.module";
+import {PortalModule} from "./app/modules/portal/portal.module";
+import {PublicModule} from "./app/modules/public/public.module";
+import {AdminModule} from "./app/modules/admin/admin.module";
 
 
 const routes: Routes = [
@@ -19,7 +18,7 @@ const routes: Routes = [
       AuthGuardPublicService
     ],
     component: PublicComponent,
-    children: PublicRoutes,
+    loadChildren: () => PublicModule
   },
   {
     path: '',
@@ -27,7 +26,7 @@ const routes: Routes = [
       AuthGuardPortalService
     ],
     component: PortalComponent,
-    children: PortalRoutes,
+    loadChildren: () => PortalModule
   },
   {
     path: 'admin',
@@ -35,18 +34,12 @@ const routes: Routes = [
       AuthGuardAdminService
     ],
     component: AdminComponent,
-    children: AdminRoutes,
+    loadChildren: () => AdminModule
   },
 ];
 
 
 @NgModule({
-  // imports: [RouterModule.forRoot(routes, {
-  //     // preload all modules; optionally we could
-  //     // implement a custom preloading strategy for just some
-  //     // of the modules (PRs welcome 😉)
-  //     preloadingStrategy: PreloadAllModules
-  // })],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

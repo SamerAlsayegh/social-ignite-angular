@@ -24,6 +24,7 @@
     "@angular/router": "^7.2.4",
     "@angular/upgrade": "^7.2.4",
     "@fortawesome/fontawesome-free": "^5.7.2",
+    "@material/chips": "^1.0.1",
     "@ng-bootstrap/ng-bootstrap": "^4.0.3",
     "@types/chart.js": "^2.7.45",
     "@types/hammerjs": "^2.0.36",

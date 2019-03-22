@@ -1,20 +1,29 @@
-import {DashboardComponent} from './components/dashboard/dashboard.component';
-import {CalendarComponent} from "./components/calendar/calendar.component";
-import {PagesComponent} from "./components/pages/pages.component";
-import {ProfileComponent} from "./components/profile/profile.component";
-import {TeamComponent} from "./components/team/team.component";
-import {BillingComponent} from "./components/billing/billing.component";
-import {ImagesComponent} from "./components/images/images.component";
-import {PostComponent} from "./components/post/post.component";
+import {ManagementModule} from "./modules/management/management.module";
+import {ImagesModule} from "./modules/images/images.module";
+import {RouterModule, Routes} from "@angular/router";
+import {NgModule} from "@angular/core";
+import {BillingModule} from "./modules/billing/billing.module";
+import {TeamModule} from "./modules/team/team.module";
+import {ProfileModule} from "./modules/profile/profile.module";
+import {DashboardModule} from "./modules/dashboard/dashboard.module";
+import {ScheduleModule} from "./modules/schedule/schedule.module";
+import {PostModule} from "./modules/post/post.module";
 
-export const PortalRoutes = [
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'post', component: PostComponent},
-  {path: 'calendar', component: CalendarComponent},
-  {path: 'pages', component: PagesComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'team', component: TeamComponent},
-  {path: 'billing', component: BillingComponent},
-  {path: 'photos', component: ImagesComponent},
+
+const routes: Routes = [
+  {path: 'dashboard', loadChildren: () => DashboardModule},
+  {path: 'post', loadChildren: () => PostModule},
+  {path: 'calendar', loadChildren: () => ScheduleModule},
+  {path: 'manage', loadChildren: () => ManagementModule},
+  {path: 'profile', loadChildren: () => ProfileModule},
+  {path: 'team', loadChildren: () => TeamModule},
+  {path: 'billing', loadChildren: () => BillingModule},
+  {path: 'photos', loadChildren: () => ImagesModule},
 ];
 
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class PortalRoutesModule {
+}

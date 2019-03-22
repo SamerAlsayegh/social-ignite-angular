@@ -20,15 +20,10 @@ import {AlertService} from "./app/services/shared/Alert/alert.service";
 import {PortalModule} from "./app/modules/portal/portal.module";
 import {AuthGuardPublicService} from "./app/services/shared/AuthGuard/public.authguard.service";
 import {AuthGuardPortalService} from "./app/services/shared/AuthGuard/portal.authguard.service";
-import {
-  IgxButtonModule,
-  IgxIconModule,
-  IgxLayoutModule,
-  IgxNavigationDrawerModule,
-  IgxRadioModule, IgxRippleModule, IgxSwitchModule, IgxToggleModule
-} from "igniteui-angular";
 import {AuthGuardAdminService} from "./app/services/shared/AuthGuard/admin.authguard.service";
 import {AdminModule} from "./app/modules/admin/admin.module";
+import {MenuService} from "./app/services/shared/Menu/menu.service";
+import {PageService} from "./app/services/portal/Page/page.service";
 
 @NgModule({
   declarations: [
@@ -42,11 +37,12 @@ import {AdminModule} from "./app/modules/admin/admin.module";
     ToastrModule.forRoot(), // ToastrModule added
     FormsModule,
     CommonModule,
+    AppRoutingModule,
     PublicModule,
     PortalModule,
-    ErrorsModule,
     AdminModule,
-    AppRoutingModule,
+    ErrorsModule,
+
   ],
   providers: [
     AuthGuardPublicService,
@@ -54,7 +50,9 @@ import {AdminModule} from "./app/modules/admin/admin.module";
     AuthGuardAdminService,
     UserService,
     RequestService,
-    AlertService
+    AlertService,
+    PageService,
+    MenuService
   ],
   bootstrap: [AppComponent]
 })

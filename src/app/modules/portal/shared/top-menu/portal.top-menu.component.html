@@ -1,0 +1,5 @@
+<igx-navbar [title]="pageName" actionButtonIcon="menu" [isActionButtonVisible]="false">
+  <!--<igx-icon color="white">search</igx-icon>-->
+  <!--<igx-icon color="white">favorite</igx-icon>-->
+  <igx-icon (click)="navigate({text: 'Settings', link: 'profile'})" color="white">settings</igx-icon>
+</igx-navbar>

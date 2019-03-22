@@ -1,9 +1,13 @@
-<div class="main" igxLayout igxLayoutDir="row" style="background: #EEEEEE">
+<div class="main d-flex" igxLayout igxLayoutDir="row" style="background: #EEEEEE">
   <div class="menu-container">
     <socialignite-portal-menu></socialignite-portal-menu>
   </div>
-  <div class="container-fluid" style="overflow-y: scroll">
-    <router-outlet></router-outlet>
+  <div class="flex-grow-1" igxLayout igxLayoutDir="column">
+    <socialignite-portal-top-menu></socialignite-portal-top-menu>
+    <div class="container-fluid" style="overflow-y: scroll">
+      <router-outlet></router-outlet>
+    </div>
   </div>
+
 </div>
 

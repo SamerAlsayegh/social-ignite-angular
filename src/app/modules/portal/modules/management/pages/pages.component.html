@@ -1,0 +1,61 @@
+<mdb-card>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Page</th>
+      <th scope="col">Next Post</th>
+      <th scope="col">Views</th>
+      <th scope="col">Engagement</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let page of pagesData.pages">
+      <th class="center-content" scope="row">
+        <socialignite-page-view [page]="page"></socialignite-page-view>
+
+
+
+        <!--<igx-chips-area>-->
+        <!--<igx-chip class="chipStyle" [disabled]="true" [id]="2" [draggable]="false" [removable]="false">-->
+        <!--</igx-chip>-->
+        <!--</igx-chips-area>-->
+      </th>
+      <td class="center-content">In 5 hours</td>
+      <td class="center-content">
+        <canvas style="height: 40px; width: 150px;" mdbChart
+                [chartType]="chartType"
+                [datasets]="chartDatasets"
+                [labels]="chartLabels"
+                [colors]="chartColors"
+                [options]="chartOptions"
+                [legend]="true"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+        </canvas>
+        <!--Mini graph goes here-->
+      </td>
+      <td class="center-content">
+        <!--Mini Graph goes here-->
+        <canvas style="height: 40px; width: 150px;" mdbChart
+                [chartType]="chartType"
+                [datasets]="chartDatasets"
+                [labels]="chartLabels"
+                [colors]="chartColors"
+                [options]="chartOptions"
+                [legend]="true"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+        </canvas>
+      </td>
+      <td class="center-content">
+        <button size="md" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>More Details</button>
+
+        <!--<button size="sm" mdbBtn type="button" color="danger" outline="true" mdbWavesEffect>Unlink</button>-->
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</mdb-card>

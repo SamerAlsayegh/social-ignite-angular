@@ -6,6 +6,7 @@ import { Component, ViewChild, ViewEncapsulation } from "@angular/core";
 import { IgxNavigationDrawerComponent } from "igniteui-angular";
 import {Router} from "@angular/router";
 import {AlertService} from "../../../../services/shared/Alert/alert.service";
+import {MenuService} from "../../../../services/shared/Menu/menu.service";
 
 
 
@@ -23,12 +24,12 @@ export class PortalMenuComponent {
     { name: "dashboard", text: "Dashboard", link: "dashboard"},
     { name: "add_circle", text: "Post", link: "post"},
     { name: "calendar_today", text: "Calendar", link: "calendar"},
-    { name: "layers", text: "Pages", link: "pages"},
+    { name: "layers", text: "Pages", link: "manage"},
     { name: "photo_library", text: "Images", link: "photos"},
     { name: "fingerprint", text: "Admin", link: "admin"},
     { name: "shopping_cart", text: "Billing", link: "billing"},
     { name: "group", text: "Team", link: "team"},
-    { name: "verified_user", text: "Profile", link: "profile"},
+    // { name: "verified_user", text: "Profile", link: "profile"},
     { name: "vpn_key", text: "Logout", link: "logout"},
 
   ];
@@ -38,7 +39,9 @@ export class PortalMenuComponent {
   @ViewChild(IgxNavigationDrawerComponent)
   public drawer: IgxNavigationDrawerComponent;
 
-  constructor(private router: Router, private User: UserService, private Alert: AlertService) {
+  constructor(private router: Router, private User: UserService, private Alert: AlertService, private Menu : MenuService) {
+    // this.selected = Menu.getTitle();
+    Menu.setTitle(this.selected);
 
   }
 
@@ -57,6 +60,7 @@ export class PortalMenuComponent {
 
     } else {
       this.selected = item.text;
+      this.Menu.setTitle(item.text);
       this.router.navigate(['/' + item.link]);
     }
     this.drawer.close();
