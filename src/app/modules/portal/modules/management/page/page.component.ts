@@ -5,6 +5,7 @@ import {PageService} from "../../../../../services/portal/Page/page.service";
 declare var require: any;
 
 @Component({
+  selector: 'socialignite-page-component',
   template: require('./page.component.html'),
   styleUrls: ['./page.component.scss']
 })

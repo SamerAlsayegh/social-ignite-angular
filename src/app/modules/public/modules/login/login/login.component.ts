@@ -1,21 +1,21 @@
-import {NgForm} from '@angular/forms';
-import {RequestService} from '../../../../services/shared/Request/request.service';
-import {environment} from '../../../../environments/environment';
+import {RequestService} from '../../../../../services/shared/Request/request.service';
 
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../../../services/shared/User/user.service';
-import {AlertService} from "../../../../services/shared/Alert/alert.service";
+import {UserService} from '../../../../../services/shared/User/user.service';
+import {AlertService} from "../../../../../services/shared/Alert/alert.service";
 import {Router} from "@angular/router";
+import {environment} from "../../../../../environments/environment";
+import {NgForm} from "@angular/forms";
 
 declare var require: any;
 
 @Component({
-  selector: 'socialignite-login-component',
   template: require('./login.component.html'),
 })
 
 
 export class LoginComponent implements OnInit {
+
   private env: any;
   user: any = {};
   private loggingIn: boolean = false;
@@ -54,4 +54,5 @@ export class LoginComponent implements OnInit {
   cancel() {
 
   }
+
 }

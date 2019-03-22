@@ -1,13 +1,13 @@
 import {NgModule, OnInit} from '@angular/core';
 import {PublicComponent} from './components/public.component';
-import {LoginComponent} from './components/login/login.component';
 import {Router} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ButtonsModule, CheckboxModule, MDBBootstrapModule, WavesModule} from 'angular-bootstrap-md';
 import {ToastrModule} from "ngx-toastr";
-import {RegisterComponent} from "./components/register/register.component";
 import {PublicRoutesModule} from "./public.routes.module";
+import {LoginModule} from "./modules/login/login.module";
+import {RegisterModule} from "./modules/register/register.module";
 
 @NgModule({
   imports: [
@@ -20,11 +20,12 @@ import {PublicRoutesModule} from "./public.routes.module";
     WavesModule,
     ButtonsModule,
     PublicRoutesModule,
+    LoginModule,
+    RegisterModule
+
   ],
   declarations: [
-    PublicComponent,
-    LoginComponent,
-    RegisterComponent,
+    PublicComponent
   ],
 })
 export class PublicModule implements OnInit {

@@ -1,16 +1,16 @@
-import {LoginComponent} from './components/login/login.component';
-import {RegisterComponent} from "./components/register/register.component";
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
+import {LoginModule} from "./modules/login/login.module";
+import {RegisterModule} from "./modules/register/register.module";
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: '', loadChildren: () => LoginModule},
+  {path: 'login', loadChildren: () => LoginModule},
+  {path: 'register', loadChildren: () => RegisterModule},
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule] 
+  exports: [RouterModule]
 })
 export class PublicRoutesModule { }
