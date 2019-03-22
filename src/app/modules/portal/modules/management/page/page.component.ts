@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../../../../services/shared/User/user.service';
-import {AlertService} from "../../../../../services/shared/Alert/alert.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {PageService} from "../../../../../services/portal/Page/page.service";
 
 declare var require: any;

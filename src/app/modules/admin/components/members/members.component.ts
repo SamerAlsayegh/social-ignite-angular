@@ -1,6 +1,4 @@
-import {NgForm} from '@angular/forms';
 import {RequestService} from '../../../../services/shared/Request/request.service';
-import {environment} from '../../../../environments/environment';
 
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../../services/shared/User/user.service';

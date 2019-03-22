@@ -1,12 +1,7 @@
 import {NgModule} from '@angular/core';
 import {ImagesRoutingModule} from './images-routing.module';
 
-import {
-  IgxAvatarModule,
-  IgxButtonModule,
-  IgxIconModule,
-  IgxLayoutModule,
-} from "igniteui-angular";
+import {IgxAvatarModule, IgxButtonModule, IgxIconModule, IgxLayoutModule,} from "igniteui-angular";
 import {ButtonsModule, MDBBootstrapModule, WavesModule} from "angular-bootstrap-md";
 import {CommonModule} from "@angular/common";
 import {ImagesComponent} from "./gallery/images.component";

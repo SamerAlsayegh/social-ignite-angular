@@ -5,8 +5,6 @@ import {IgxAvatarModule, IgxButtonModule, IgxIconModule, IgxLayoutModule,} from 
 import {ButtonsModule, MDBBootstrapModule, WavesModule} from "angular-bootstrap-md";
 import {CommonModule} from "@angular/common";
 import {HomeComponent} from "./home/home.component";
-import {Dashboard1Component} from "./home/dashboard1/dashboard1.component";
-import {StatsCard2Component} from "./home/common/stats-card2/stats-card2.component";
 import {StatsCardComponent} from "./home/common/stats-card/stats-card.component";
 
 @NgModule({

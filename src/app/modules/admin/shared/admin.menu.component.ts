@@ -1,9 +1,8 @@
 declare var require: any;
 
-import { Component, ViewChild, ViewEncapsulation } from "@angular/core";
-import { IgxNavigationDrawerComponent } from "igniteui-angular";
+import {Component, ViewChild, ViewEncapsulation} from "@angular/core";
+import {IgxNavigationDrawerComponent} from "igniteui-angular";
 import {Router} from "@angular/router";
-
 
 
 @Component({

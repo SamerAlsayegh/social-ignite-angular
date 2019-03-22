@@ -1,13 +1,11 @@
 import {UserService} from "../../../../services/shared/User/user.service";
-
-declare var require: any;
-
-import { Component, ViewChild, ViewEncapsulation } from "@angular/core";
-import { IgxNavigationDrawerComponent } from "igniteui-angular";
+import {Component, ViewChild, ViewEncapsulation} from "@angular/core";
+import {IgxNavigationDrawerComponent} from "igniteui-angular";
 import {Router} from "@angular/router";
 import {AlertService} from "../../../../services/shared/Alert/alert.service";
 import {MenuService} from "../../../../services/shared/Menu/menu.service";
 
+declare var require: any;
 
 
 @Component({

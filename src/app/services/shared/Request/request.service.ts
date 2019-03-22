@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Request} from '../../../models/Request';
-import {Error} from "tslint/lib/error";
 import {timeout} from "rxjs/operators";
 
 

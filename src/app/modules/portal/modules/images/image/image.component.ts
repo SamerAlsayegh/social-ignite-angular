@@ -1,5 +1,4 @@
-
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {RequestService} from "../../../../../services/shared/Request/request.service";
 import {UserService} from "../../../../../services/shared/User/user.service";

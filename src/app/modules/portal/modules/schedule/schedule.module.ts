@@ -1,12 +1,7 @@
 import {NgModule} from '@angular/core';
 import {ScheduleRoutesModule} from './schedule.routes.module';
 
-import {
-  IgxAvatarModule,
-  IgxButtonModule,
-  IgxIconModule,
-  IgxLayoutModule,
-} from "igniteui-angular";
+import {IgxAvatarModule, IgxButtonModule, IgxIconModule, IgxLayoutModule,} from "igniteui-angular";
 import {ButtonsModule, MDBBootstrapModule, WavesModule} from "angular-bootstrap-md";
 import {CommonModule} from "@angular/common";
 import {ViewComponent} from "./view/view.component";

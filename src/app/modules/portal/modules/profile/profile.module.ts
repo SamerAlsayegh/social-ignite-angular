@@ -1,12 +1,7 @@
 import {NgModule} from '@angular/core';
 import {ProfileRoutesModule} from './profile.routes.module';
 
-import {
-  IgxAvatarModule,
-  IgxButtonModule,
-  IgxIconModule,
-  IgxLayoutModule,
-} from "igniteui-angular";
+import {IgxAvatarModule, IgxButtonModule, IgxIconModule, IgxLayoutModule,} from "igniteui-angular";
 import {ButtonsModule, MDBBootstrapModule, WavesModule} from "angular-bootstrap-md";
 import {CommonModule} from "@angular/common";
 import {SettingsComponent} from "./settings/settings.component";

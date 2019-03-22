@@ -1,14 +1,11 @@
-import {Observable} from "rxjs/Observable";
-
-declare var require: any;
-
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 
 
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../services/shared/User/user.service";
-import {from} from "rxjs/internal/observable/from";
+
+declare var require: any;
 
 @Component({
     template: require('./public.component.html'),
