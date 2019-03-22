@@ -3,7 +3,7 @@ import {PublicComponent} from './components/public.component';
 import {LoginComponent} from './components/login/login.component';
 import {Router} from '@angular/router';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ButtonsModule, CheckboxModule, MDBBootstrapModule, WavesModule} from 'angular-bootstrap-md';
 import {ToastrModule} from "ngx-toastr";
 import {RegisterComponent} from "./components/register/register.component";
@@ -16,6 +16,7 @@ import {PublicRoutesModule} from "./public.routes.module";
     ToastrModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     CheckboxModule,
+    ReactiveFormsModule,
     WavesModule,
     ButtonsModule,
     PublicRoutesModule,

@@ -1,4 +1,4 @@
-import {NgForm} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RequestService} from '../../../../services/shared/Request/request.service';
 import {environment} from '../../../../environments/environment';
 
@@ -21,30 +21,55 @@ export class RegisterComponent implements OnInit {
     mailing_list: true
   };
   private signingUp: boolean = false;
+  private signupForm: {
+    valid: boolean,
+    value: {
+      email: string,
+    }
+  };
 
-  constructor(private requestService: RequestService, private userService: UserService, private alert: AlertService, private router : Router) {
+  constructor(private requestService: RequestService, private userService: UserService, private alert: AlertService, private router: Router) {
     this.env = environment;
     this.signingUp = false;
   }
 
   async ngOnInit() {
-
+    this.signupForm = new FormGroup({
+      'email': new FormControl(this.user.name, [Validators.required, Validators.minLength(4), Validators.email]),
+      'password': new FormControl(this.user.password, [Validators.required, Validators.minLength(4)]),
+      'toc': new FormControl(this.user.toc, [Validators.requiredTrue,]),
+      'mailing_list': new FormControl(this.user.mailing_list, []),
+      'mode': new FormControl(this.user.mode, []),
+    });
   }
 
-  async onSubmit(signupForm: NgForm) {
+  async onSubmit() {
     const self = this;
     self.signingUp = true;
-    let registered = await this.userService.register(signupForm.value);
-    // Successful
-    if (registered) {
-      await this.alert.success('Registered, please check your email.');
-      this.router.navigate(['/register/verify', { email: signupForm.value.email }]);
-      // Route to new page
+    console.log(this.signupForm);
+    if (this.signupForm.valid) {
+      try {
+        let registered = await this.userService.register(this.signupForm.value);
+        // Successful
+        if (registered) {
+          await this.alert.success('Registered, please check your email.');
+          this.router.navigate(['/register/verify', {email: this.signupForm.value.email}]);
+          // Route to new page
+        } else {
+          await this.alert.error('Failed to register');
+        }
+        self.signingUp = false;
+      } catch (e) {
+        console.log(e);
+        await this.alert.error('Failed to register');
+
+        self.signingUp = false;
+      }
     } else {
-      await this.alert.error('Failed to register');
+      self.signingUp = false;
+      await this.alert.error('Check form errors.');
+
     }
-    self.signingUp = false;
-    console.log(registered);
   }
 
   registerFacebook() {
